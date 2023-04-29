@@ -1,0 +1,5 @@
+outs:
+- md5: 366ab5ab2e8e683e9e6effcddc6e83ba.dir
+  size: 34608868
+  nfiles: 15
+  path: lecture_slide_pdfs_py4e
