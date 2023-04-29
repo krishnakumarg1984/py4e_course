@@ -1,0 +1,252 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Python: current file",
+      "type": "shell",
+      // "command": "${command:python.interpreterPath}",
+      "command": "python",
+      "args": ["${file}"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "focus": true,
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Run executable",
+      "type": "shell",
+      "command": "${fileDirname}/${fileBasenameNoExtension}.x",
+      "options": {
+        "cwd": "${fileDirname}"
+      }
+    },
+    {
+      "label": "Clean executable",
+      "type": "shell",
+      "command": "rm ${fileDirname}/${fileBasenameNoExtension}.x 2>/dev/null",
+      "options": {
+        "cwd": "${fileDirname}"
+      }
+    },
+    {
+      "label": "Compile file (C++20 debug build) with g++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-I plog/",
+        "-pedantic-errors",
+        "-pipe",
+        "-std=c++20",
+        "-Wall",
+        "-Wcast-align",
+        "-Wcast-qual",
+        "-Wconversion",
+        "-Wctor-dtor-privacy",
+        "-Wdeprecated-copy-dtor",
+        "-Wdouble-promotion",
+        "-Wextra",
+        "-Wextra-semi",
+        "-Wfloat-equal",
+        "-Wformat=2",
+        "-Wnull-dereference",
+        "-Wold-style-cast",
+        "-Woverloaded-virtual",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wsign-conversion",
+        "-Wsign-promo",
+        "-Wstrict-aliasing",
+        "-Wswitch-default",
+        "-Wswitch-enum",
+        "-Wundef",
+        "-Wunused-macros",
+        "-O0",
+        "-g",
+        "-ggdb",
+        "-fsanitize=address",
+        "-fasynchronous-unwind-tables",
+        "-fexceptions",
+        "-fsanitize=float-cast-overflow",
+        "-fsanitize=float-divide-by-zero",
+        "-fsanitize=undefined",
+        "-fstack-clash-protection",
+        "-fstack-protector-all",
+        "-fstack-protector-strong",
+        "-fstrict-aliasing",
+        "-DDEBUG",
+        "-DDBG_MACRO_DISABLE",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.x"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": ["relative", "${workspaceFolder}/build"]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+      // "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "Compile file (C++20 debug build) with clang++",
+      "type": "shell",
+      "command": "clang++",
+      "args": [
+        "-I plog/",
+        "-pedantic-errors",
+        "-pipe",
+        "-std=c++20",
+        "-Wall",
+        "-Wcast-align",
+        "-Wcast-qual",
+        "-Wconversion",
+        "-Wctor-dtor-privacy",
+        "-Wdeprecated-copy-dtor",
+        "-Wdouble-promotion",
+        "-Wextra",
+        "-Wextra-semi",
+        "-Wfloat-equal",
+        "-Wformat=2",
+        "-Wnull-dereference",
+        "-Wold-style-cast",
+        "-Woverloaded-virtual",
+        "-Wpedantic",
+        "-Wshadow",
+        "-Wsign-conversion",
+        "-Wsign-promo",
+        "-Wstrict-aliasing",
+        "-Wswitch-default",
+        "-Wswitch-enum",
+        "-Wundef",
+        "-Wunused-macros",
+        "-O0",
+        "-g",
+        "-ggdb",
+        "-fsanitize=address",
+        "-fasynchronous-unwind-tables",
+        "-fexceptions",
+        "-fsanitize=float-cast-overflow",
+        "-fsanitize=float-divide-by-zero",
+        "-fsanitize=undefined",
+        "-fstack-clash-protection",
+        "-fstack-protector-all",
+        "-fstack-protector-strong",
+        "-fstrict-aliasing",
+        "-DDEBUG",
+        "-DDBG_MACRO_DISABLE",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.x"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": ["relative", "${workspaceFolder}/build"]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+      // "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "Compile file (C++20 release build) with g++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-I plog/",
+        "-pedantic-errors",
+        "-pipe",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wfloat-equal",
+        "-Wformat=2",
+        "-Wpedantic",
+        "-O2",
+        "-DNDEBUG",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.x"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": ["relative", "${workspaceFolder}/build"]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Compile file (C++20 release build) with clang++",
+      "type": "shell",
+      "command": "clang++",
+      "args": [
+        "-I plog/",
+        "-pedantic-errors",
+        "-pipe",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wfloat-equal",
+        "-Wformat=2",
+        "-Wpedantic",
+        "-O2",
+        "-DNDEBUG",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.x"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": ["relative", "${workspaceFolder}/build"]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+    // {
+    //     "label": "Compile (C++20 debug build) and run",
+    //     "type": "shell",
+    //     "dependsOrder": "sequence",
+    //     "dependsOn": ["Compile file (C++20 debug build)", "Run executable"],
+    //     "options": {
+    //         "cwd": "${fileDirname}"
+    //     },
+    // },
+    // {
+    //     "label": "Compile (C++20 release build) and run",
+    //     "type": "shell",
+    //     "dependsOrder": "sequence",
+    //     "dependsOn": ["Compile file (C++20 release build)", "Run executable"],
+    //     "options": {
+    //         "cwd": "${fileDirname}"
+    //     },
+    // },
+  ]
+}

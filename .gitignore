@@ -160,3 +160,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 /lecture_slide_pdfs_py4e
+!.vscode/
