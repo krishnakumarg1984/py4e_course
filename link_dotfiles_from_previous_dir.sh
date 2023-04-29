@@ -15,5 +15,6 @@ for dotfile in $dotfiles_in_prev_dir; do
 done
 
 ln -s ../.vscode . 2>/dev/null
+ln -s ../.nvim.lua . 2>/dev/null
 ln -s ../setup.cfg . 2>/dev/null
 ln -s ../.ruff.toml . 2>/dev/null
