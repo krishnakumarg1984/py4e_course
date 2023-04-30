@@ -3,28 +3,26 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/SOURCES.md
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/859
 local status_ok, null_ls = pcall(require, "null-ls")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 -- list of globally installed sources in $PATH (not those installed with ':FInstall')
-null_ls.register({
+null_ls.register {
   diagnostics.cppcheck,
   diagnostics.cpplint,
   diagnostics.mypy, -- unsure if ruff covers it yet
   diagnostics.pylint,
   diagnostics.ruff, -- pycodestyle, pydocstyle, pyflakes, mccabe, eradicate etc
-  diagnostics.semgrep.with({ extra_args = { "--config=auto" } }),
-  diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
+  diagnostics.semgrep.with { extra_args = { "--config=auto" } },
+  diagnostics.shellcheck.with { diagnostics_format = "[#{c}] #{m} (#{s})" },
   formatting.black,
   formatting.clang_format,
   formatting.shfmt,
   formatting.stylua,
   formatting.usort,
-})
-null_ls.enable({})
+}
+null_ls.enable {}
 
 -- Other project-specific 'diagnostic-linters' and 'formatters' to consider {{{
 -- formatting.asmformat,
@@ -79,9 +77,7 @@ null_ls.enable({})
 -- }}}
 
 local status_ok_nvim_lint, nvim_lint = pcall(require, "lint")
-if not status_ok_nvim_lint then
-  return
-end
+if not status_ok_nvim_lint then return end
 nvim_lint.linters_by_ft = {
   c = { "clazy", "flawfinder" },
   cmake = { "cmakelint" },
@@ -92,4 +88,4 @@ nvim_lint.linters_by_ft = {
   tex = { "lacheck" },
   rst = { "rstlint" },
 }
-vim.cmd([[autocmd BufWritePost * lua require('lint').try_lint()]])
+vim.cmd [[autocmd BufWritePost * lua require('lint').try_lint()]]
