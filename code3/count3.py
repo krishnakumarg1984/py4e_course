@@ -1,8 +1,10 @@
 import string
-fhand = open('romeo-full.txt')
-counts = dict()
+from typing import Dict, List
+
+fhand = open("romeo-full.txt", encoding="UTF-8")
+counts: Dict[str, int] = {}
 for line in fhand:
-    line = line.translate(str.maketrans('', '', string.punctuation))
+    line = line.translate(str.maketrans("", "", string.punctuation))
     line = line.lower()
     words = line.split()
     for word in words:
@@ -12,7 +14,7 @@ for line in fhand:
             counts[word] += 1
 
 # Sort the dictionary by value
-lst = list()
+lst = []
 for key, val in list(counts.items()):
     lst.append((val, key))
 

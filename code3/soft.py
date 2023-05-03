@@ -1,12 +1,12 @@
-txt = 'but soft what light in yonder window breaks'
+txt = "but soft what light in yonder window breaks"
 words = txt.split()
-t = list()
+t = []
 for word in words:
     t.append((len(word), word))
 
 t.sort(reverse=True)
 
-res = list()
+res = []
 for length, word in t:
     res.append(word)
 
